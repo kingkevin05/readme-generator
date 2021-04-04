@@ -47,7 +47,6 @@ function generateMarkdown(userResponses, userInfo) {
   
   ## Installation
   
-  *Steps required to install project and how to get the development environment running:*
   
   ${userResponses.installation}`;
   }
