@@ -24,7 +24,7 @@
 
 * [`axios`](https://www.npmjs.com/package/axios) to fetch your info from the GitHub API
 
-Run the app with with node index.js.
+Run the app with with `node index.js.`
   
   ## Usage 
   
@@ -32,8 +32,10 @@ Run the app with with node index.js.
   
 When you run `node index.js`, the application uses the `inquirer` package to prompt you in the command line with a series of questions about your GitHub and about your project.
 
-The application takes your answers and uses `axios` to fetch your GitHub profile from the [GitHub API](https://developer.github.com/v3/), including your GitHub profile picture (avatar) and email.
-From there, the app will generate the markdown and a table of contents for the README conditionally based on your answers to the Inquirer prompts (so, if you don't answer the optional questions, such as Installation, an Installation section will not be included in your README). The README will also include badges.
+The application takes your answers and uses `axios` to fetch your GitHub profile from the [GitHub API](https://developer.github.com/v3/), including your GitHub profile picture and email.
+From there, the app will generate the markdown and a table of contents for the README conditionally based on your answers to the Inquirer prompts. If you don't answer the optional questions, that section will not be included in your README. 
+
+The README will also include badges.
 
 Finally, `fs.writeFile` is used to generate your project's README.md file.
   
