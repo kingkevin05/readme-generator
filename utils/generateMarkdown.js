@@ -1,20 +1,123 @@
-// TODO: Create a function that returns a license badge based on which license is passed in
-// If there is no license, return an empty string
-function renderLicenseBadge(license) {}
+function generateMarkdown(userResponses, userInfo) {
+  // Generate Table of Contents conditionally based on userResponses
+  let draftToC = `## Table of Contents`;
 
-// TODO: Create a function that returns the license link
-// If there is no license, return an empty string
-function renderLicenseLink(license) {}
+  if (userResponses.installation !== "") {
+    draftToC += `
+  * [Installation](#installation)`;
+  }
 
-// TODO: Create a function that returns the license section of README
-// If there is no license, return an empty string
-function renderLicenseSection(license) {}
+  if (userResponses.usage !== "") {
+    draftToC += `
+  * [Usage](#usage)`;
+  }
 
-// TODO: Create a function to generate markdown for README
-function generateMarkdown(data) {
-  return `# ${data.title}
+  if (userResponses.contributing !== "") {
+    draftToC += `
+  * [Contributing](#contributing)`;
+  }
 
-`;
+  if (userResponses.tests !== "") {
+    draftToC += `
+  * [Tests](#tests)`;
+  }
+
+  // Generate markdown for the top required portions of the README
+  let draftMarkdown = `# ${userResponses.title}
+  ![Badge for GitHub repo top language](https://img.shields.io/github/languages/top/${userResponses.username}/${userResponses.repo}?style=flat&logo=appveyor) ![Badge for GitHub last commit](https://img.shields.io/github/last-commit/${userResponses.username}/${userResponses.repo}?style=flat&logo=appveyor)
+  
+  badges hosted by [shields.io](https://shields.io/).
+  
+  
+  ## Description 
+  
+  ${userResponses.description}
+  `;
+
+  // Add Table of Contents to markdown
+  draftMarkdown += draftToC;
+
+  // Add License section
+  draftMarkdown += `
+  * [License](#license)`;
+
+  // Optional Installation section
+  if (userResponses.installation !== "") {
+    draftMarkdown += `
+  
+  ## Installation
+  
+  *Steps required to install project and how to get the development environment running:*
+  
+  ${userResponses.installation}`;
+  }
+
+  // Optional Usage section
+  if (userResponses.usage !== "") {
+    draftMarkdown += `
+  
+  ## Usage 
+  
+  *Instructions and examples for use:*
+  
+  ${userResponses.usage}`;
+  }
+
+  // Optional Contributing section
+  if (userResponses.contributing !== "") {
+    `
+  
+  ## Contributing
+  
+  *If you would like to contribute it, you can follow these guidelines for how to do so.*
+  
+  ${userResponses.contributing}`;
+  }
+
+  // Optional Tests section
+  if (userResponses.tests !== "") {
+    draftMarkdown += `
+  
+  ## Tests
+  
+  *Tests for application and how to run them:*
+  
+  ${userResponses.tests}`;
+  }
+
+  // License section is required
+  draftMarkdown += `
+  
+  ## License
+  
+  ${userResponses.license}
+  `;
+
+  // Questions / About Developer section
+  let draftDev = `
+  ---
+  
+  ## Questions?
+  
+  ![Developer Profile Picture](${userInfo.avatar_url}) 
+  
+  If you have any question please feel free to reach out:
+ 
+  GitHub: [@${userInfo.login}](${userInfo.url})
+  `;
+
+  // If GitHub email is not null, add to Developer section
+  if (userInfo.email !== null) {
+    draftDev += `
+  Email: ${userInfo.email}
+  `;
+  }
+
+  // Add developer section to markdown
+  draftMarkdown += draftDev;
+
+  // Return markdown
+  return draftMarkdown;
 }
 
 module.exports = generateMarkdown;
