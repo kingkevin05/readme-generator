@@ -1,4 +1,4 @@
-# README.md
+# README Generator
   ![Badge for GitHub repo top language](https://img.shields.io/github/languages/top/kingkevin05/readme-generator?style=flat&logo=appveyor) ![Badge for GitHub last commit](https://img.shields.io/github/last-commit/kingkevin05/readme-generator?style=flat&logo=appveyor)
   
   badges hosted by [shields.io](https://shields.io/).
@@ -26,7 +26,9 @@
 
 Run the app with with `node index.js.`
   
-  ## Usage 
+  ## Usage
+  
+  ![Gif demo of README-generator](readme-demo.gif)
   
   *Instructions and examples for use:*
   
